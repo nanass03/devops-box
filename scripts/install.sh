@@ -8,7 +8,7 @@ if [ -e /etc/redhat-release ] ; then
 fi
 
 TERRAFORM_VERSION="0.12.15"
-PACKER_VERSION="1.4.5"
+PACKER_VERSION="1.4.5gi"
 # create new ssh key
 [[ ! -f /home/ubuntu/.ssh/mykey ]] \
 && mkdir -p /home/ubuntu/.ssh \
