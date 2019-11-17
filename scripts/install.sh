@@ -7,8 +7,8 @@ if [ -e /etc/redhat-release ] ; then
   REDHAT_BASED=true
 fi
 
-TERRAFORM_VERSION="0.12.12"
-PACKER_VERSION="1.2.4"
+TERRAFORM_VERSION="0.12.15"
+PACKER_VERSION="1.4.5"
 # create new ssh key
 [[ ! -f /home/ubuntu/.ssh/mykey ]] \
 && mkdir -p /home/ubuntu/.ssh \
@@ -21,10 +21,16 @@ if [ ${REDHAT_BASED} ] ; then
   yum install -y docker ansible unzip wget
 else 
   apt-get update
-  apt-get -y install docker.io ansible unzip
+  apt-get -y install ansible unzip
 fi
+
+# install docker
+curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
+
 # add docker privileges
 usermod -G docker ubuntu
+
 # install pip
 pip install -U pip && pip3 install -U pip
 if [[ $? == 127 ]]; then
